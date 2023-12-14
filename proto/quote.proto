@@ -1,0 +1,31 @@
+syntax = "proto3";
+option go_package = "/proto";
+
+import "proto/order.proto";
+
+package proto;
+
+message QuotesEvent {
+    repeated PairQuote currentQuotes = 1;
+}
+
+message PairQuote {
+    OrderPair pair = 1;
+    double price = 2;
+    double volume = 3;
+}
+
+message MarketDepthEvent {
+    repeated PairMatketDepth marketDepth = 1;
+}
+
+message PairMatketDepth{
+    OrderPair pair = 1;
+    OrderDirection direction = 2;
+    repeated VolumeByPrice volumeByPrice = 3;
+}
+
+message VolumeByPrice {
+    double price = 1;
+    double volume = 2;
+}
